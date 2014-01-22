@@ -25,7 +25,9 @@ Rewatch.prototype.watch = function(file) {
   var me = this;
   if (~file.indexOf('*')) {
     glob(file, function(err, files) {
-      files.forEach(me.watch);
+      files.map(function(file) {
+        me.watch(file);
+      });
     });
   } else {
     // fs.watch is not reliable

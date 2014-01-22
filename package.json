@@ -15,7 +15,8 @@
   ],
   "author": "Hsiaoming Yang <me@lepture.com>",
   "dependencies": {
-    "glob": "~3.2.8"
+    "glob": "~3.2.8",
+    "win-spawn": "~2.0.0"
   },
   "bin": {
     "rewatch": "bin/rewatch"

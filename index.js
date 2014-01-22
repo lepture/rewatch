@@ -6,7 +6,7 @@
 
 var fs = require('fs');
 var glob = require('glob');
-var child_process = require('child_process');
+var spawn = require('win-spawn');
 var Emitter = require('events').EventEmitter;
 
 function Rewatch(files, command) {
@@ -41,14 +41,13 @@ Rewatch.prototype.watch = function(file) {
 Rewatch.prototype.execute = function() {
   var me = this;
   var now = new Date();
+  var commands = me._command.split(/\s+/);
   if (!me._time || now - me._time > 800) {
     // execute;
     me._time = now;
-    console.log(format(now), ' - ', me._command);
-    child_process.exec(me._command, function(err, stdout, stderr) {
-      if (err) {
-        console.log(err);
-      }
+    subprocess = spawn(commands[0], commands.slice(1));
+    subprocess.stdout.on('data', function(data) {
+      process.stdout.write(data.toString());
     });
   }
 };

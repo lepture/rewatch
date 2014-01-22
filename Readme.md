@@ -29,6 +29,10 @@ Examples:
 
 ## Changelog
 
+**2014-01-22** `0.1.1`
+
+Bugfix for context closure.
+
 **2014-01-22** `0.1.0`
 
 First version.

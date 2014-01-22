@@ -47,6 +47,7 @@ Rewatch.prototype.execute = function() {
     // execute;
     me._time = now;
     subprocess = spawn(commands[0], commands.slice(1));
+    console.log(format(now), ' - ', me._command);
     subprocess.stdout.on('data', function(data) {
       process.stdout.write(data.toString());
     });

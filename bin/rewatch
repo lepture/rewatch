@@ -27,6 +27,11 @@ function main(argv) {
       case '--version':
         printVersion();
         break;
+      case '-h':
+      case '-H':
+      case '--help':
+        printHelp();
+        break;
       default:
         files.push(arg);
         break;
@@ -41,5 +46,24 @@ main(process.argv.slice(2));
 function printVersion() {
   var pkg = require('../package');
   console.log('rewatch ' + pkg.version);
+  process.exit();
+}
+
+function printHelp() {
+  var lines = [
+    '',
+    '  Usage:',
+    '    rewatch [files..] -c "[command]"',
+    '',
+    '  Options:',
+    '    -c, --command=<command>   a shell command',
+    '    -v, --version             print the version of vc',
+    '    -h, --help                display this message',
+    '',
+    '  Examples:',
+    '    $ rewatch *.js foo.css -c "make build"',
+    ''
+  ];
+  console.log(lines.join('\n'));
   process.exit();
 }

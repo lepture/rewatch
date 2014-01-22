@@ -1,0 +1,27 @@
+{
+  "name": "rewatch",
+  "version": "0.0.0",
+  "description": "Watch and execute command",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lepture/rewatch.git"
+  },
+  "keywords": [
+    "watch",
+    "reload",
+    "guard",
+    "livereload"
+  ],
+  "author": "Hsiaoming Yang <me@lepture.com>",
+  "dependencies": {
+    "glob": "~3.2.8"
+  },
+  "bin": {
+    "rewatch": "bin/rewatch"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lepture/rewatch/issues"
+  }
+}

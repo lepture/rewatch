@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var Rewatch = require('..');
+
+function main(argv) {
+
+  var getArg = function() {
+    var args = argv.shift();
+    args = args.split('=');
+    if (args.length > 1) {
+      argv.unshift(args.slice(1).join('='));
+    }
+    return args[0];
+  };
+
+  var arg, cmd, files = [];
+
+  while (argv.length) {
+    arg = getArg();
+    switch(arg) {
+      case '-c':
+      case '--command':
+        cmd = argv.shift();
+        break;
+      case '-v':
+      case '-V':
+      case '--version':
+        printVersion();
+        break;
+      default:
+        files.push(arg);
+        break;
+    }
+  }
+
+  new Rewatch(files, cmd);
+}
+
+main(process.argv.slice(2));
+
+function printVersion() {
+  var pkg = require('../package');
+  console.log('rewatch ' + pkg.version);
+  process.exit();
+}

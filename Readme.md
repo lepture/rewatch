@@ -31,6 +31,10 @@ Examples:
 
 ## Changelog
 
+**2014-01-22** `0.2.1`
+
+Bugfix for toNumber.
+
 **2014-01-22** `0.2.0`
 
 Support for windows. Add options interval.

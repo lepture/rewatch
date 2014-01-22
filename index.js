@@ -65,6 +65,8 @@ function format(t) {
 }
 
 function toNumber(t) {
+  if (!t) return null;
+
   t = t.toString();
 
   if (/^\d+$/.test(t)) return parseInt(t, 10);

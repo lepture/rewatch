@@ -13,7 +13,7 @@ function main(argv) {
     return args[0];
   };
 
-  var arg, cmd, files = [];
+  var arg, cmd, interval, files = [];
 
   while (argv.length) {
     arg = getArg();
@@ -21,6 +21,11 @@ function main(argv) {
       case '-c':
       case '--command':
         cmd = argv.shift();
+        break;
+      case '-i':
+      case '-I':
+      case '--interval':
+        interval = argv.shift();
         break;
       case '-v':
       case '-V':
@@ -40,7 +45,7 @@ function main(argv) {
   if (!cmd) {
     printHelp(1);
   }
-  new Rewatch(files, cmd);
+  new Rewatch(files, cmd, interval);
 }
 
 main(process.argv.slice(2));
@@ -59,6 +64,7 @@ function printHelp(code) {
     '',
     '  Options:',
     '    -c, --command=<command>   a shell command',
+    '    -i, --interval=[ms]       interval micro seconds',
     '    -v, --version             print the version of vc',
     '    -h, --help                display this message',
     '',

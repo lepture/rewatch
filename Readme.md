@@ -27,6 +27,12 @@ Examples:
     $ rewatch *.js foo.css -c "make build"
 ```
 
+## Changelog
+
+**2014-01-22** `0.1.0`
+
+First version.
+
 ## License
 
 MIT

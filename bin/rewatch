@@ -37,7 +37,9 @@ function main(argv) {
         break;
     }
   }
-
+  if (!cmd) {
+    printHelp(1);
+  }
   new Rewatch(files, cmd);
 }
 
@@ -49,7 +51,7 @@ function printVersion() {
   process.exit();
 }
 
-function printHelp() {
+function printHelp(code) {
   var lines = [
     '',
     '  Usage:',
@@ -65,5 +67,5 @@ function printHelp() {
     ''
   ];
   console.log(lines.join('\n'));
-  process.exit();
+  process.exit(code || 0);
 }

@@ -70,6 +70,7 @@ function printHelp(code) {
     '',
     '  Examples:',
     '    $ rewatch *.js foo.css -c "make build"',
+    '    $ rewatch *.js foo.css -c "make build" -i 500',
     ''
   ];
   console.log(lines.join('\n'));

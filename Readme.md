@@ -20,14 +20,20 @@ Usage:
 
 Options:
     -c, --command=<command>   a shell command
+    -i, --interval=[ms]       interval micro seconds
     -v, --version             print the version of vc
     -h, --help                display this message
 
 Examples:
     $ rewatch *.js foo.css -c "make build"
+    $ rewatch *.js foo.css -c "make build" -i 500
 ```
 
 ## Changelog
+
+**2014-01-22** `0.2.0`
+
+Support for windows. Add options interval.
 
 **2014-01-22** `0.1.1`
 

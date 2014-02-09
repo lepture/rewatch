@@ -31,6 +31,10 @@ Examples:
 
 ## Changelog
 
+**2014-02-09** `0.2.2`
+
+Console.log the command.
+
 **2014-01-22** `0.2.1`
 
 Bugfix for toNumber.

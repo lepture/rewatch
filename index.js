@@ -2,6 +2,8 @@
  * Rewatch
  *
  * Watch and execute commands.
+ *
+ * Copyright (c) 2014 by Hsiaoming Yang
  */
 
 var fs = require('fs');

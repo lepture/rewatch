@@ -9,20 +9,21 @@
 var fs = require('fs');
 var glob = require('glob');
 var spawn = require('win-spawn');
-var Emitter = require('events').EventEmitter;
+var inherits = require('util').inherits;
+var EventEmitter = require('events').EventEmitter;
 
 function Rewatch(files, command, interval) {
   var me = this;
   me.interval = toNumber(interval) || 800;
-  me.emitter = new Emitter();
   me._command = command;
   files.map(function(file) {
     me.watch(file);
   });
-  me.emitter.on('change', function() {
+  me.on('change', function() {
     me.execute();
   });
 }
+inherits(Rewatch, EventEmitter);
 
 Rewatch.prototype.watch = function(file) {
   var me = this;
@@ -36,7 +37,7 @@ Rewatch.prototype.watch = function(file) {
     // fs.watch is not reliable
     // https://github.com/joyent/node/issues/3172
     fs.watchFile(file, {interval: me.interval}, function() {
-      me.emitter.emit('change');
+      me.emit('change');
     });
   }
 };

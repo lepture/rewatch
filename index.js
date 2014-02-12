@@ -16,7 +16,7 @@ function Rewatch(files, command, interval) {
   var me = this;
   me.interval = toNumber(interval) || 800;
   me._command = command;
-  files.map(function(file) {
+  files.forEach(function(file) {
     me.watch(file);
   });
   me.on('change', function() {
@@ -29,7 +29,7 @@ Rewatch.prototype.watch = function(file) {
   var me = this;
   if (~file.indexOf('*')) {
     glob(file, function(err, files) {
-      files.map(function(file) {
+      files.forEach(function(file) {
         me.watch(file);
       });
     });

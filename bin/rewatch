@@ -45,7 +45,10 @@ function main(argv) {
   if (!cmd) {
     printHelp(1);
   }
-  new Rewatch(files, cmd, interval);
+  var wather = new Rewatch(files, cmd, interval);
+  wather.on('execute', function(t, c) {
+    console.log(format(t), ' - ', c);
+  });
 }
 
 main(process.argv.slice(2));
@@ -75,4 +78,14 @@ function printHelp(code) {
   ];
   console.log(lines.join('\n'));
   process.exit(code || 0);
+}
+
+function format(t) {
+  var h = t.getHours();
+  if (h < 10) h = '0' + h;
+  var m = t.getMinutes();
+  if (m < 10) m = '0' + m;
+  var s = t.getSeconds();
+  if (s < 10) s = '0' + s;
+  return h + ':' + m + ':' + s;
 }

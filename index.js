@@ -50,23 +50,13 @@ Rewatch.prototype.execute = function() {
     // execute;
     me._time = now;
     subprocess = spawn(commands[0], commands.slice(1));
-    console.log(format(now), ' - ', me._command);
+    me.emit('execute', now, me._command);
     subprocess.stdout.on('data', function(data) {
       process.stdout.write(data.toString());
     });
   }
 };
 
-
-function format(t) {
-  var h = t.getHours();
-  if (h < 10) h = '0' + h;
-  var m = t.getMinutes();
-  if (m < 10) m = '0' + m;
-  var s = t.getSeconds();
-  if (s < 10) s = '0' + s;
-  return h + ':' + m + ':' + s;
-}
 
 function toNumber(t) {
   if (!t) return null;

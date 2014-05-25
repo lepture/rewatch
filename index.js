@@ -49,7 +49,7 @@ Rewatch.prototype.execute = function() {
   if (!me._time || now - me._time > me.interval) {
     // execute;
     me._time = now;
-    subprocess = spawn(commands[0], commands.slice(1));
+    var subprocess = spawn(commands[0], commands.slice(1));
     me.emit('execute', now, me._command);
     subprocess.stdout.on('data', function(data) {
       process.stdout.write(data.toString());

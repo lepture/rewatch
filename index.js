@@ -51,9 +51,8 @@ Rewatch.prototype.execute = function() {
     me._time = now;
     var subprocess = spawn(commands[0], commands.slice(1));
     me.emit('execute', now, me._command);
-    subprocess.stdout.on('data', function(data) {
-      process.stdout.write(data.toString());
-    });
+    subprocess.stdout.pipe(process.stdout);
+    subprocess.stderr.pipe(process.stderr);
   }
 };
 

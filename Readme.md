@@ -21,6 +21,8 @@ Usage:
 Options:
     -c, --command=<command>   a shell command
     -i, --interval=[ms]       interval micro seconds
+    -d, --delay=[ms]          delay to execute command
+    -s, --signal=[signal]     kill child process with signal
     -v, --version             print the version of vc
     -h, --help                display this message
 
@@ -30,6 +32,14 @@ Examples:
 ```
 
 ## Changelog
+
+**2014-08-20** `0.4.0`
+
+Remove `-e` option. Add `-s` option for kill child process.
+
+```
+$ rewatch *.js -c "node ./server.js" -s "SIGTERM"
+```
 
 **2014-08-20** `0.3.0`
 

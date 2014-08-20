@@ -12,15 +12,25 @@ var spawn = require('win-spawn');
 var inherits = require('util').inherits;
 var EventEmitter = require('events').EventEmitter;
 
-function Rewatch(files, command, interval) {
+function Rewatch(files, command, options) {
   var me = this;
-  me.interval = toNumber(interval) || 800;
+  options = options || {};
+
+  me.interval = toNumber(options.interval) || 800;
+  me.delay = toNumber(options.delay) || 0;
+
   me._command = command;
   files.forEach(function(file) {
     me.watch(file);
   });
   me.on('change', function() {
-    me.execute();
+    if (me.delay) {
+      setTimeout(function() {
+        me.execute();
+      }, me.delay);
+    } else {
+      me.execute();
+    }
   });
 }
 inherits(Rewatch, EventEmitter);

@@ -81,7 +81,7 @@ function printHelp(code) {
     '    -c, --command=<command>   a shell command',
     '    -i, --interval=[ms]       interval micro seconds',
     '    -d, --delay=[ms]          delay to execute command',
-    '    -e, --execute             execute command initially',
+    '    -s, --signal=[signal]     kill child process with signal',
     '    -v, --version             print the version of vc',
     '    -h, --help                display this message',
     '',

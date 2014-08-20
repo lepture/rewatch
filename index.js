@@ -18,6 +18,7 @@ function Rewatch(files, command, options) {
 
   me.interval = toNumber(options.interval) || 800;
   me.delay = toNumber(options.delay) || 0;
+  me.signal = options.signal;
 
   me._command = command;
   files.forEach(function(file) {
@@ -59,10 +60,13 @@ Rewatch.prototype.execute = function() {
   if (!me._time || now - me._time > me.interval) {
     // execute;
     me._time = now;
-    var subprocess = spawn(commands[0], commands.slice(1));
+    if (me._child && me.signal) {
+      me._child.kill(me.signal);
+    }
+    me._child = spawn(commands[0], commands.slice(1));
     me.emit('execute', now, me._command);
-    subprocess.stdout.pipe(process.stdout);
-    subprocess.stderr.pipe(process.stderr);
+    me._child.stdout.pipe(process.stdout);
+    me._child.stderr.pipe(process.stderr);
   }
 };
 

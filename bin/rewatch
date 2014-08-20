@@ -14,7 +14,6 @@ function main(argv) {
   };
 
   var arg, cmd, options = {}, files = [];
-  var initial;
 
   while (argv.length) {
     arg = getArg();
@@ -23,9 +22,9 @@ function main(argv) {
       case '--command':
         cmd = argv.shift();
         break;
-      case '-e':
-      case '--execute':
-        initial = true;
+      case '-s':
+      case '--signal':
+        options.signal = argv.shift();
         break;
       case '-i':
       case '-I':
@@ -56,7 +55,7 @@ function main(argv) {
     printHelp(1);
   }
   var wather = new Rewatch(files, cmd, options);
-  if (initial) {
+  if (options.signal) {
     wather.execute();
   }
   wather.on('execute', function(t, c) {

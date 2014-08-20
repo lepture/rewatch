@@ -1,6 +1,6 @@
 {
   "name": "rewatch",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Watch and execute command",
   "main": "index.js",
   "repository": {

@@ -31,6 +31,10 @@ Examples:
 
 ## Changelog
 
+**2014-08-20** `0.3.0`
+
+Fix global leak for subprocess. Add option `-d` and `-e`.
+
 **2014-02-09** `0.2.2`
 
 Console.log the command.
